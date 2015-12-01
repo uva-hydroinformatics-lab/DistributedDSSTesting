@@ -268,7 +268,7 @@ def downloadSpeed(files, quiet=False):
             thread.start()
             q.put(thread, True)
             if not quiet and not shutdown_event.isSet():
-                sys.stdout.write('.')
+#                sys.stdout.write('.')
                 sys.stdout.flush()
 
     finished = []
@@ -617,16 +617,14 @@ def speedtest():
     if args.secure:
         scheme = 'https'
 
-    if not args.simple:
-        print_('Retrieving speedtest.net configuration...')
+
     try:
         config = getConfig()
     except URLError:
         print_('Cannot retrieve speedtest configuration')
         sys.exit(1)
 
-    if not args.simple:
-        print_('Retrieving speedtest.net server list...')
+
     if args.list or args.server:
         servers = closestServers(config['client'], True)
         if args.list:
@@ -640,8 +638,6 @@ def speedtest():
     else:
         servers = closestServers(config['client'])
 
-    if not args.simple:
-        print_('Testing from %(isp)s (%(ip)s)...' % config['client'])
 
     if args.server:
         try:
@@ -698,15 +694,7 @@ def speedtest():
         except:
             best = servers[0]
     else:
-        if not args.simple:
-            print_('Selecting best server based on latency...')
         best = getBestServer(servers)
-
-    if not args.simple:
-        print_(('Hosted by %(sponsor)s (%(name)s) [%(d)0.2f km]: '
-               '%(latency)s ms' % best).encode('utf-8', 'ignore'))
-    else:
-        print_('Ping: %(latency)s ms' % best)
 
     sizes = [350, 500, 750, 1000, 1500, 2000, 2500, 3000, 3500, 4000]
     urls = []
@@ -714,8 +702,7 @@ def speedtest():
         for i in range(0, 4):
             urls.append('%s/random%sx%s.jpg' %
                         (os.path.dirname(best['url']), size, size))
-    if not args.simple:
-        print_('Testing download speed', end='')
+
     dlspeed = downloadSpeed(urls, args.simple)
     if not args.simple:
         print_()
@@ -727,13 +714,9 @@ def speedtest():
     for size in sizesizes:
         for i in range(0, 25):
             sizes.append(size)
-    if not args.simple:
-        print_('Testing upload speed', end='')
+
     ulspeed = uploadSpeed(best['url'], sizes, args.simple)
-    if not args.simple:
-        print_()
-    print_('Upload: %0.2f M%s/s' %
-           ((ulspeed / 1000 / 1000) * args.units[1], args.units[0]))
+
 
     if args.share and args.mini:
         print_('Cannot generate a speedtest.net share results image while '
