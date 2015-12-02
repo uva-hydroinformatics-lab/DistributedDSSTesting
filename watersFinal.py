@@ -20,8 +20,8 @@ for i in range(100):
     t0 = time.time()
     
     #Project Center
-    lon = -78.473836
     lat = 38.0819
+    lon = -78.473836
     
     #build the point indexing URL
     PtServiceUrl = "http://ofmpub.epa.gov/waters10/PointIndexing.Service?" \
@@ -34,7 +34,7 @@ for i in range(100):
         + "&optOutPrettyPrint=0"
       
     #open the url
-    response = json.loads(urllib2.urlopen(PtServiceUrl).read())
+    response = json.loads(urllib2.urlopen(PtServiceUrl, timeout=10000).read())
 
     #get relevant info
     comid = response['output']['ary_flowlines'][0]['comid']
@@ -56,7 +56,7 @@ for i in range(100):
         + "&optOutPrettyPrint=0"
             
     #open the url
-    response1 = json.loads(urllib2.urlopen(UsDsServiceUrl).read())
+    response1 = json.loads(urllib2.urlopen(UsDsServiceUrl, timeout=10000).read())
     
     t3 = time.time()
     
@@ -73,7 +73,7 @@ for i in range(100):
         + "&pOutputFlag=TRUE"
        
     #open the url
-    response2 = json.loads(urllib2.urlopen(NavDelServiceUrl).read())
+    response2 = json.loads(urllib2.urlopen(NavDelServiceUrl, timeout=1000).read())
 
     t5 = time.time()  
 
