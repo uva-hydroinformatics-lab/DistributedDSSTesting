@@ -3,6 +3,9 @@ import json, xmltodict
 import urllib
 from time import time
 import xml.etree.ElementTree as ET
+import xml.etree as etree
+
+import pprint
 
 # Study area Box (decimal WGS 1984)
 northlimit = 38.076876
@@ -28,11 +31,10 @@ data = urllib.urlopen(soilDataRequestUrl)
 readPolyData = polyData.read()
 readData = data.read()
 t1 = time()
-tree = ET.dump(readData)
-root = tree.getroot()
+root = ET.fromstring(readData)
 
 
-print root.tag
+
 # #Convert the GML respond to json
 # poly_o = xmltodict.parse(readPolyData)
 # poly_respond_to_json = json.dumps(poly_o)
