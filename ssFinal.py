@@ -14,7 +14,7 @@ basinChar = ['basinChar']
 totalTime = ['total']
 
 print time.strftime("%c")
-for i in range(100):
+for i in range(25):
     speedtestUpdate.speedtest()
     
     lat = 38.0656515783
