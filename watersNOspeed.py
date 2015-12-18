@@ -33,8 +33,8 @@ totalTime4km = ['totalTime4km']
 
 
 #Project Center
-lat_list = [38.069188,38.071789,38.0819,38.082042,38.089676]
-lon_list = [-78.479390,-78.476922,-78.473836,-78.470678,-78.478274]
+lat_list = [38.094955,38.092861,38.090722,38.082042,38.089676]
+lon_list = [-78.449287,-78.454319,-78.460392,-78.470678,-78.478274]
 
 for i in range(100):
     for j in range(len(lat_list)):
@@ -56,6 +56,8 @@ for i in range(100):
     
         #get relevant info
         comid = response['output']['ary_flowlines'][0]['comid']
+        print j
+        print comid
         
         t1 = time.time()
         if j == 0:
@@ -134,11 +136,11 @@ for i in range(100):
         if j == 4:
             totalTime4km.append(t5-t0)
 
-for i in range(len(ptIndexHalfkm)):
-    print '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s'%(ptIndexHalfkm[i],ptIndex1km[i],ptIndex2km[i], \
-        ptIndex3km[i],ptIndex4km[i],usDsHalfkm[i],usDs1km[i], \
-        usDs2km[i],usDs3km[i],usDs4km[i],navDelHalfkm[i],navDel1km[i], \
-        navDel2km[i],navDel3km[i],navDel4km[i],totalTimeHalfkm[i],totalTime1km[i], \
-        totalTime2km[i],totalTime3km[i],totalTime4km[i])
+#for i in range(len(ptIndexHalfkm)):
+#    print '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s'%(ptIndexHalfkm[i],ptIndex1km[i],ptIndex2km[i], \
+#        ptIndex3km[i],ptIndex4km[i],usDsHalfkm[i],usDs1km[i], \
+#        usDs2km[i],usDs3km[i],usDs4km[i],navDelHalfkm[i],navDel1km[i], \
+#        navDel2km[i],navDel3km[i],navDel4km[i],totalTimeHalfkm[i],totalTime1km[i], \
+#        totalTime2km[i],totalTime3km[i],totalTime4km[i])
     
 
