@@ -56,8 +56,6 @@ for i in range(100):
     
         #get relevant info
         comid = response['output']['ary_flowlines'][0]['comid']
-        print j
-        print comid
         
         t1 = time.time()
         if j == 0:
@@ -136,11 +134,11 @@ for i in range(100):
         if j == 4:
             totalTime4km.append(t5-t0)
 
-#for i in range(len(ptIndexHalfkm)):
-#    print '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s'%(ptIndexHalfkm[i],ptIndex1km[i],ptIndex2km[i], \
-#        ptIndex3km[i],ptIndex4km[i],usDsHalfkm[i],usDs1km[i], \
-#        usDs2km[i],usDs3km[i],usDs4km[i],navDelHalfkm[i],navDel1km[i], \
-#        navDel2km[i],navDel3km[i],navDel4km[i],totalTimeHalfkm[i],totalTime1km[i], \
-#        totalTime2km[i],totalTime3km[i],totalTime4km[i])
+for i in range(len(ptIndexHalfkm)):
+    print '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s'%(ptIndexHalfkm[i],ptIndex1km[i],ptIndex2km[i], \
+        ptIndex3km[i],ptIndex4km[i],usDsHalfkm[i],usDs1km[i], \
+        usDs2km[i],usDs3km[i],usDs4km[i],navDelHalfkm[i],navDel1km[i], \
+        navDel2km[i],navDel3km[i],navDel4km[i],totalTimeHalfkm[i],totalTime1km[i], \
+        totalTime2km[i],totalTime3km[i],totalTime4km[i])
     
 
